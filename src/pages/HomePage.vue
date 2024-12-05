@@ -1,9 +1,12 @@
 <script setup>
+import { AppState } from '@/AppState';
+import { Blog } from '@/models/Blog';
 import { blogsService } from '@/services/BlogsService';
 import { logger } from '@/utils/Logger';
 import Pop from '@/utils/Pop';
-import { onMounted } from 'vue';
+import { computed, onMounted } from 'vue';
 
+const blogs = computed(() => AppState.blogs)
 
 onMounted(() => {
   getBlogs()
@@ -22,8 +25,8 @@ async function getBlogs() {
 </script>
 
 <template>
-  <div class="">
-
+  <div class="container">
+    <p>{{ blogs }}</p>
   </div>
 </template>
 
