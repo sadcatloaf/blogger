@@ -17,12 +17,19 @@ defineProps({
         <h4>
             {{ blogProp.title }}
         </h4>
-        <p>
-            {{ blogProp.body }}
-        </p>
+        <div>
+            <div v-if="blogProp.body.length < 200">
+                {{ blogProp.body }}
+            </div>
+            <div v-else> {{ blogProp.body.substring(0, 200) + ".." }}
+            </div>
+        </div>
+        <div>
+            {{ blogProp.createdAt }}
+        </div>
     </div>
     <div class="col-4">
-        <img :src="blogProp.imgUrl" alt="">
+        <img class="img-fluid cover-img" :src="blogProp.imgUrl" alt="">
     </div>
 </template>
 
@@ -31,6 +38,12 @@ defineProps({
     height: 3rem;
     aspect-ratio: 1/1;
     border-radius: 50%;
+    object-fit: cover;
+}
+
+.cover-img {
+    height: 200px;
+    width: 100%;
     object-fit: cover;
 }
 </style>
