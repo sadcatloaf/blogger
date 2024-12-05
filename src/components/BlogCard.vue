@@ -11,7 +11,9 @@ defineProps({
 <template>
     <div class="col-7">
         <div>
-            <img class="creator-img" :src="blogProp.creator.picture" alt="">
+            <router-link :to="{ name: 'Profile', params: { profileId: blogProp.creatorId } }">
+                <img class="creator-img" :src="blogProp.creator.picture" alt="">
+            </router-link>
             <h5>{{ blogProp.creator.name }}</h5>
         </div>
         <h4>

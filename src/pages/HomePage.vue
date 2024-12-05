@@ -1,7 +1,6 @@
 <script setup>
 import { AppState } from '@/AppState';
 import BlogCard from '@/components/BlogCard.vue';
-import { Blog } from '@/models/Blog';
 import { blogsService } from '@/services/BlogsService';
 import { logger } from '@/utils/Logger';
 import Pop from '@/utils/Pop';
