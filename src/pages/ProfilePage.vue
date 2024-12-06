@@ -7,9 +7,11 @@ import Pop from '@/utils/Pop';
 import { computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import BlogCard from '@/components/BlogCard.vue';
+import AccountModal from '@/components/AccountModal.vue';
 
 const profile = computed(() => AppState.activeProfile)
 const blogs = computed(() => AppState.blogs)
+const account = computed(() => AppState.account)
 
 const route = useRoute()
 
@@ -51,13 +53,15 @@ async function getBlogsByCreatorId() {
             </div>
             <div class="col-7">
                 <h2>{{ profile.name }}</h2>
-                <button class="btn btn-warning">Edit Profile</button>
+                <button class="btn btn-warning" type="button" data-bs-toggle="modal" data-bs-target="#AccountModal">Edit
+                    Profile</button>
             </div>
         </div>
         <div v-for="blog in blogs" :key="blog.id" class="row  p-3 my-3 border border-dark rounded shadow">
             <BlogCard :blog-prop="blog" />
         </div>
     </div>
+    <AccountModal v-if="account" />
 </template>
 
 <style scoped lang="scss">
